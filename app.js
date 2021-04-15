@@ -4,7 +4,18 @@
 const questions = document.querySelectorAll(".question");
 
 questions.forEach((quest) => {
-	const btn = quest.querySelectorAll(".question-btn");
+	const btn = quest.querySelector(".question-btn");
+	btn.addEventListener("click", () => {
+		// если один вопрос открыт, то при нажатии на другой вопрос, текущий закроется
+		// для этого проходим циклом по всем вопросам
+		questions.forEach(item => {
+			if (item !== quest) {
+				item.classList.remove("show-text");
+			}
+		});
+
+		quest.classList.toggle("show-text");
+	});
 });
 
 
